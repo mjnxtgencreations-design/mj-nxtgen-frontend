@@ -395,7 +395,7 @@
             submitBtn.innerHTML = "SENDING...";
 
             try {
-                const response = await fetch("https://mj-nxtgen-creations-1.onrender.com/api/contact", {
+                const response = await fetch("https://mj-nxtgen-backend.onrender.com/api/contact", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify(data)

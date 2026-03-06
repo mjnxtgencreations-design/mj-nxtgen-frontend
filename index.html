@@ -371,110 +371,63 @@
     </footer>
 
     <script>
-        const contactForm = document.getElementById("contactForm");
-        contactForm.addEventListener("submit", async function (e) {
-            e.preventDefault();
+const contactForm = document.getElementById("contactForm");
 
-            const formStatus = document.getElementById("formStatus");
-            const submitBtn = contactForm.querySelector("button[type='submit']");
-            const originalBtnHtml = submitBtn.innerHTML;
-            const data = {
-                name: document.querySelector("[name='name']").value,
-                phone: document.querySelector("[name='phone']").value,
-                email: document.querySelector("[name='email']").value,
-                service: document.querySelector("[name='service']").value,
-                details: document.querySelector("[name='details']").value,
-                _gotcha: document.querySelector("[name='_gotcha']").value,
-                client_time: new Date().toISOString(),
-                client_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || ""
-            };
+contactForm.addEventListener("submit", async function (e) {
+    e.preventDefault();
 
-            formStatus.className = "text-sm font-medium hidden";
-            submitBtn.disabled = true;
-            submitBtn.classList.add("opacity-70", "cursor-not-allowed");
-            submitBtn.innerHTML = "SENDING...";
+    const formStatus = document.getElementById("formStatus");
+    const submitBtn = contactForm.querySelector("button[type='submit']");
+    const originalBtn = submitBtn.innerHTML;
 
-            try {
-                const response = await fetch("https://mj-nxtgen-backend.onrender.com/api/contact", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    body: JSON.stringify(data)
-                });
-                const result = await response.json();
-                if (!response.ok || !result.ok) {
-                    throw new Error(result.error || "Failed to submit message.");
-                }
+    submitBtn.disabled = true;
+    submitBtn.innerHTML = "Sending...";
 
-                contactForm.reset();
-                formStatus.textContent = "Message sent successfully.";
-                formStatus.className = "text-sm font-medium text-green-600";
-            } catch (error) {
-                formStatus.textContent = "Unable to send now. Please try again.";
-                formStatus.className = "text-sm font-medium text-red-600";
-            } finally {
-                formStatus.classList.remove("hidden");
-                submitBtn.disabled = false;
-                submitBtn.classList.remove("opacity-70", "cursor-not-allowed");
-                submitBtn.innerHTML = originalBtnHtml;
+    const data = {
+        name: contactForm.name.value,
+        phone: contactForm.phone.value,
+        email: contactForm.email.value,
+        service: contactForm.service.value,
+        details: contactForm.details.value,
+        _gotcha: "",
+        client_time: new Date().toISOString(),
+        client_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone
+    };
+
+    try {
+
+        const response = await fetch(
+            "https://mj-nxtgen-backend.onrender.com/api/contact",
+            {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
             }
-        });
+        );
 
-        // Mobile Menu Toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            const icon = document.getElementById('menuIcon');
-            
-            if (menu.classList.contains('hidden')) {
-                menu.classList.remove('hidden');
-                menu.classList.add('flex');
-                icon.classList.remove('fa-bars');
-                icon.classList.add('fa-xmark');
-            } else {
-                menu.classList.add('hidden');
-                menu.classList.remove('flex');
-                icon.classList.remove('fa-xmark');
-                icon.classList.add('fa-bars');
-            }
+        const result = await response.json();
+
+        if (!response.ok || !result.ok) {
+            throw new Error(result.error || "Submission failed");
         }
 
-        // --- NEW: Category Filtering Logic ---
-        function filterProjects(category, btnElement) {
-            // Update button styles to reflect active state
-            const buttons = document.querySelectorAll('.filter-btn');
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-black', 'text-white');
-                btn.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200');
-            });
-            btnElement.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200');
-            btnElement.classList.add('bg-black', 'text-white');
+        contactForm.reset();
 
-            // Filter the project cards
-            const projects = document.querySelectorAll('.project-card');
-            projects.forEach(project => {
-                const projectCategory = project.getAttribute('data-category');
-                
-                if (category === 'all' || projectCategory === category) {
-                    project.style.display = 'block';
-                } else {
-                    project.style.display = 'none';
-                }
-            });
-        }
+        formStatus.textContent = "Message sent successfully!";
+        formStatus.className = "text-green-600 font-semibold";
 
-        // Scroll Reveal Animation (Intersection Observer)
-        function reveal() {
-            var reveals = document.querySelectorAll(".reveal");
-            for (var i = 0; i < reveals.length; i++) {
-                var windowHeight = window.innerHeight;
-                var elementTop = reveals[i].getBoundingClientRect().top;
-                var elementVisible = 100;
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add("active");
-                }
-            }
-        }
-        window.addEventListener("scroll", reveal);
-        reveal(); // Trigger on initial load
+    } catch (error) {
+
+        formStatus.textContent = "Unable to send now. Please try again later.";
+        formStatus.className = "text-red-600 font-semibold";
+
+    }
+
+    submitBtn.disabled = false;
+    submitBtn.innerHTML = originalBtn;
+});
     </script>
 </body>
 </html>

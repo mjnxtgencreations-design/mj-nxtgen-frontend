@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOMEGROWN | Artisan Market</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* RESET & VARIABLES */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Georgia', 'Times New Roman', serif;
+        }
+
+        :root {
+            --bg-color: #fcf8f0;
+            --text-dark: #3a2c1b;
+            --text-medium: #5e3a22;
+            --text-light: #8b6b4e;
+            --accent-color: #b45f2b;
+            --accent-hover: #8c4a21;
+            --border-color: #e0c9a6;
+            --card-bg: #eae0d0;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* NAVIGATION */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: var(--bg-color);
+            border-bottom: 2px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--accent-color);
+            letter-spacing: 2px;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-medium);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-icons button {
+            background: none;
+            border: none;
+            color: var(--text-medium);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-icons button:hover {
+            color: var(--accent-color);
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background-color: var(--accent-color);
+            color: white;
+            font-size: 0.65rem;
+            font-weight: bold;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .menu-toggle {
+            display: none;
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--text-medium);
+            cursor: pointer;
+        }
+
+        /* HERO STORY SECTION */
+        .hero-story {
+            display: flex;
+            flex-wrap: wrap;
+            min-height: 80vh;
+        }
+
+        .story-left {
+            flex: 1;
+            min-width: 300px;
+            padding: 5rem 6%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .story-left h1 {
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 400;
+            line-height: 1.1;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+        }
+
+        .story-left h1 span {
+            color: var(--accent-color);
+            font-style: italic;
+        }
+
+        .story-left p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: var(--text-medium);
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .signature {
+            font-family: 'Brush Script MT', cursive;
+            font-size: 2.8rem;
+            color: var(--accent-color);
+            margin-bottom: 2.5rem;
+            transform: rotate(-5deg);
+        }
+
+        .shop-now-btn {
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            cursor: pointer;
+            width: fit-content;
+            transition: background 0.3s, transform 0.2s;
+            border-radius: 50px;
+            font-family: system-ui, -apple-system, sans-serif;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .shop-now-btn:hover {
+            background-color: var(--accent-hover);
+            transform: translateY(-2px);
+        }
+
+        .story-right {
+            flex: 1;
+            min-width: 300px;
+            background-image: url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&w=1200&q=80');
+            background-size: cover;
+            background-position: center;
+            min-height: 500px;
+        }
+
+        /* TRUST BADGES */
+        .trust-badges {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            padding: 2.5rem 5%;
+            background-color: var(--card-bg);
+            flex-wrap: wrap;
+            border-top: 1px solid var(--border-color);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .badge-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            color: var(--text-medium);
+            font-family: system-ui, -apple-system, sans-serif;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        .badge-icon {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+        }
+
+        /* FEATURED PRODUCTS */
+        .featured-products {
+            padding: 6rem 5%;
+            background-color: var(--bg-color);
+        }
+
+        .featured-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .featured-header h2 {
+            font-size: 3rem;
+            font-weight: 400;
+            color: var(--text-medium);
+            font-style: italic;
+        }
+
+        .featured-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 600px;
+            margin: 1rem auto 0;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .food-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            max-width: 1300px;
+            margin: 0 auto;
+        }
+
+        .food-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(94, 58, 34, 0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border-color);
+        }
+
+        .food-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 40px rgba(94, 58, 34, 0.12);
+        }
+
+        .food-image {
+            height: 280px;
+            overflow: hidden;
+        }
+
+        .food-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.7s ease;
+        }
+
+        .food-card:hover .food-image img {
+            transform: scale(1.05);
+        }
+
+        .food-info {
+            padding: 1.5rem;
+        }
+
+        .food-info h3 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-medium);
+        }
+
+        .food-desc {
+            color: var(--text-light);
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-size: 0.95rem;
+        }
+
+        .food-price {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--bg-color);
+            padding-top: 1rem;
+        }
+
+        .price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .add-btn {
+            background: var(--card-bg);
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 30px;
+            color: var(--text-medium);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .add-btn:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        /* STORY SECTION WITH PRESS */
+        .our-story {
+            padding: 6rem 5%;
+            background-color: var(--card-bg);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .story-content {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .story-content h2 {
+            font-size: 2.8rem;
+            font-weight: 400;
+            margin-bottom: 1.5rem;
+            color: var(--text-medium);
+            font-style: italic;
+        }
+
+        .story-content p {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .press-logos {
+            flex: 1;
+            min-width: 300px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(94, 58, 34, 0.05);
+            border: 1px solid var(--border-color);
+        }
+
+        .press-logos h3 {
+            margin-bottom: 2.5rem;
+            font-weight: 400;
+            color: var(--text-light);
+            font-style: italic;
+            font-size: 1.5rem;
+        }
+
+        .logos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            text-align: center;
+        }
+
+        .logos div {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            opacity: 0.7;
+            font-family: system-ui, -apple-system, sans-serif;
+            letter-spacing: 1px;
+        }
+
+        /* NEWSLETTER */
+        .newsletter {
+            padding: 5rem 5%;
+            background-color: var(--text-medium);
+            color: var(--bg-color);
+            text-align: center;
+        }
+
+        .newsletter h3 {
+            font-size: 2.5rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            font-style: italic;
+        }
+
+        .newsletter p {
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            font-family: system-ui, -apple-system, sans-serif;
+            opacity: 0.9;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+            border-radius: 50px;
+            overflow: hidden;
+            background: white;
+            padding: 0.3rem;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            font-size: 1rem;
+            font-family: system-ui, -apple-system, sans-serif;
+            outline: none;
+        }
+
+        .newsletter-form button {
+            padding: 1rem 2.5rem;
+            background: var(--accent-color);
+            color: white;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: background 0.3s;
+            border-radius: 50px;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .newsletter-form button:hover {
+            background: var(--accent-hover);
+        }
+
+        /* FOOTER */
+        footer {
+            background-color: var(--text-dark);
+            color: var(--card-bg);
+            padding: 3rem 5%;
+            text-align: center;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+        
+        footer p {
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* FARM BOX DRAWER (CART) */
+        .cart-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(58, 44, 27, 0.4);
+            backdrop-filter: blur(2px);
+            z-index: 999;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .cart-drawer {
+            position: fixed;
+            top: 0;
+            right: -450px;
+            width: 100%;
+            max-width: 420px;
+            height: 100%;
+            background: var(--bg-color);
+            z-index: 1000;
+            box-shadow: -5px 0 25px rgba(58, 44, 27, 0.2);
+            transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+            border-left: 2px solid var(--border-color);
+        }
+
+        .cart-active .cart-overlay {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .cart-active .cart-drawer {
+            right: 0;
+        }
+
+        .cart-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+        }
+
+        .cart-header h2 {
+            font-weight: 400;
+            font-size: 1.8rem;
+            color: var(--text-medium);
+            font-style: italic;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .close-cart:hover {
+            color: var(--accent-color);
+        }
+
+        .cart-items-container {
+            flex: 1;
+            overflow-y: auto;
+            padding: 2rem;
+        }
+
+        .cart-items-container::-webkit-scrollbar { width: 6px; }
+        .cart-items-container::-webkit-scrollbar-track { background: var(--bg-color); }
+        .cart-items-container::-webkit-scrollbar-thumb { background: var(--border-color); border-radius: 10px; }
+
+        .cart-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px dashed var(--border-color);
+            position: relative;
+        }
+
+        .cart-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-info h4 {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 0.3rem;
+            color: var(--text-medium);
+        }
+
+        .cart-item-info p {
+            color: var(--accent-color);
+            font-family: system-ui, -apple-system, sans-serif;
+            font-weight: bold;
+            font-size: 1rem;
+        }
+
+        .remove-btn {
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            position: absolute;
+            bottom: 1.5rem;
+            right: 0;
+            font-size: 0.85rem;
+            transition: color 0.3s;
+            font-family: system-ui, -apple-system, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+        }
+
+        .remove-btn:hover {
+            color: var(--accent-color);
+        }
+
+        .cart-footer {
+            padding: 2rem;
+            background: white;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.3rem;
+            color: var(--text-medium);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .cart-total span:last-child {
+            font-weight: bold;
+            font-family: system-ui, -apple-system, sans-serif;
+            font-style: normal;
+        }
+
+        .checkout-btn {
+            width: 100%;
+            background-color: var(--text-medium);
+            color: white;
+            border: none;
+            padding: 1.2rem;
+            font-size: 0.95rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background 0.3s;
+            font-family: system-ui, -apple-system, sans-serif;
+        }
+
+        .checkout-btn:hover {
+            background-color: var(--text-dark);
+        }
+
+        .empty-cart-msg {
+            text-align: center;
+            color: var(--text-light);
+            margin-top: 3rem;
+            font-style: italic;
+            font-size: 1.1rem;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 76px;
+                left: -100%;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                padding: 3rem 0;
+                gap: 2rem;
+                box-shadow: 0 10px 15px rgba(94, 58, 34, 0.1);
+                transition: left 0.3s ease;
+                border-bottom: 2px solid var(--border-color);
+            }
+
+            .nav-links.mobile-active {
+                left: 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .story-left {
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <button class="menu-toggle" onclick="toggleMenu()"><i class="fa-solid fa-bars"></i></button>
+        <a href="#" class="logo">HOMEGROWN</a>
+        <div class="nav-links" id="navLinks">
+            <a href="#">OUR STORY</a>
+            <a href="#">SHOP</a>
+            <a href="#">RECIPES</a>
+            <a href="#">VISIT US</a>
+        </div>
+        <div class="nav-icons">
+            <button onclick="alert('Search feature coming soon!')"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <button onclick="toggleCart()">
+                <i class="fa-solid fa-basket-shopping"></i>
+                <span class="cart-count" id="cartCount">0</span>
+            </button>
+            <button onclick="alert('Account login coming soon!')"><i class="fa-regular fa-user"></i></button>
+        </div>
+    </nav>
+
+    <section class="hero-story">
+        <div class="story-left">
+            <h1>Good food,<br><span>grown with love</span></h1>
+            <p>Fourth-generation farmers bringing you the finest organic produce, artisan goods, and family recipes passed down through decades.</p>
+            <div class="signature">The Miller Family</div>
+            <button class="shop-now-btn" onclick="document.getElementById('products').scrollIntoView({behavior: 'smooth'})">SHOP THE HARVEST</button>
+        </div>
+        <div class="story-right"></div>
+    </section>
+
+    <section class="trust-badges">
+        <div class="badge-item">
+            <i class="fa-solid fa-leaf badge-icon"></i>
+            <span>Certified Organic</span>
+        </div>
+        <div class="badge-item">
+            <i class="fa-solid fa-tractor badge-icon"></i>
+            <span>Farm Direct</span>
+        </div>
+        <div class="badge-item">
+            <i class="fa-solid fa-box-open badge-icon"></i>
+            <span>Carbon Neutral</span>
+        </div>
+        <div class="badge-item">
+            <i class="fa-solid fa-heart badge-icon"></i>
+            <span>Since 1952</span>
+        </div>
+    </section>
+
+    <section id="products" class="featured-products">
+        <div class="featured-header">
+            <h2>This week's harvest</h2>
+            <p>Hand-picked and packed with care, delivered to your doorstep within 48 hours.</p>
+        </div>
+        
+        <div class="food-grid">
+            <div class="food-card">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=800&q=80" alt="Heirloom Tomatoes">
+                </div>
+                <div class="food-info">
+                    <h3>Heirloom Tomato Box</h3>
+                    <p class="food-desc">Mixed varieties, sun-ripened on the vine.</p>
+                    <div class="food-price">
+                        <span class="price">$24.00</span>
+                        <button class="add-btn" onclick="addToCart('Heirloom Tomato Box', 24.00, 'https://images.unsplash.com/photo-1592924357228-91a4daadcfea?auto=format&fit=crop&w=200&q=80')">Add to Box</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="food-card">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=800&q=80" alt="Artisan Sourdough">
+                </div>
+                <div class="food-info">
+                    <h3>Artisan Sourdough</h3>
+                    <p class="food-desc">Fresh baked daily with our 12-year starter.</p>
+                    <div class="food-price">
+                        <span class="price">$8.00</span>
+                        <button class="add-btn" onclick="addToCart('Artisan Sourdough', 8.00, 'https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&w=200&q=80')">Add to Box</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="food-card">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&w=800&q=80" alt="Raw Honey">
+                </div>
+                <div class="food-info">
+                    <h3>Raw Wildflower Honey</h3>
+                    <p class="food-desc">Unfiltered, local honey in a 16oz glass jar.</p>
+                    <div class="food-price">
+                        <span class="price">$18.00</span>
+                        <button class="add-btn" onclick="addToCart('Raw Wildflower Honey', 18.00, 'https://images.unsplash.com/photo-1528698827591-e19ccd7bc23d?auto=format&fit=crop&w=200&q=80')">Add to Box</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="food-card">
+                <div class="food-image">
+                    <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=800&q=80" alt="Vegetable Bundle">
+                </div>
+                <div class="food-info">
+                    <h3>Seasonal Veggie Bundle</h3>
+                    <p class="food-desc">5-7 lbs of fresh, chef's choice organic greens.</p>
+                    <div class="food-price">
+                        <span class="price">$35.00</span>
+                        <button class="add-btn" onclick="addToCart('Seasonal Veggie Bundle', 35.00, 'https://images.unsplash.com/photo-1542838132-92c53300491e?auto=format&fit=crop&w=200&q=80')">Add to Box</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="our-story">
+        <div class="story-content">
+            <h2>From our family to yours</h2>
+            <p>What started as a small roadside stand in 1952 has grown into a community of food lovers who care about where their food comes from. We still farm the same land, using traditional methods passed down through generations.</p>
+            <p>Every week, we pack and ship thousands of boxes to families who share our passion for real, honest food. No pesticides. No shortcuts. Just the way nature intended.</p>
+        </div>
+        <div class="press-logos">
+            <h3>As featured in</h3>
+            <div class="logos">
+                <div>FOOD & WINE</div>
+                <div>BON APPÉTIT</div>
+                <div>THE NEW YORK TIMES</div>
+                <div>SAVEUR</div>
+            </div>
+        </div>
+    </section>
+
+    <section class="newsletter">
+        <h3>Join the harvest</h3>
+        <p>Get weekly updates on what's fresh, plus exclusive recipes from our farmhouse kitchen.</p>
+        <div class="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button onclick="event.preventDefault(); alert('Thank you for joining our family!')">SIGN UP</button>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 HOMEGROWN ARTISAN MARKET. ALL RIGHTS RESERVED.</p>
+        <p style="margin-top: 1rem; color: #bcaa94;">123 Farm Road · Open Tuesday–Saturday 9am–5pm</p>
+    </footer>
+
+    <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h2>Your Harvest Box</h2>
+            <button class="close-cart" onclick="toggleCart()"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        
+        <div class="cart-items-container" id="cartItemsContainer">
+            <p class="empty-cart-msg">Your box is currently empty. Add some fresh goods!</p>
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span id="cartTotalDisplay">$0.00</span>
+            </div>
+            <button class="checkout-btn" onclick="alert('Preparing your box for secure checkout...')">CHECKOUT NOW</button>
+        </div>
+    </div>
+
+    <script>
+        // Mobile Menu Logic
+        function toggleMenu() {
+            const nav = document.getElementById('navLinks');
+            nav.classList.toggle('mobile-active');
+        }
+
+        // Cart Drawer Logic
+        let cart = [];
+
+        function toggleCart() {
+            document.body.classList.toggle('cart-active');
+            document.body.style.overflow = document.body.classList.contains('cart-active') ? 'hidden' : 'auto';
+        }
+
+        function addToCart(name, price, imageSrc) {
+            cart.push({ id: Date.now(), name, price, imageSrc });
+            updateCartUI();
+
+            if(!document.body.classList.contains('cart-active')) {
+                toggleCart();
+            }
+        }
+
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const container = document.getElementById('cartItemsContainer');
+            const countDisplay = document.getElementById('cartCount');
+            const totalDisplay = document.getElementById('cartTotalDisplay');
+
+            countDisplay.innerText = cart.length;
+
+            const total = cart.reduce((sum, item) => sum + item.price, 0);
+            totalDisplay.innerText = `$${total.toFixed(2)}`;
+
+            if (cart.length === 0) {
+                container.innerHTML = '<p class="empty-cart-msg">Your box is currently empty. Add some fresh goods!</p>';
+                return;
+            }
+
+            container.innerHTML = '';
+            cart.forEach((item) => {
+                const itemHTML = `
+                    <div class="cart-item">
+                        <img src="${item.imageSrc}" alt="${item.name}">
+                        <div class="cart-item-info">
+                            <h4>${item.name}</h4>
+                            <p>$${item.price.toFixed(2)}</p>
+                            <button class="remove-btn" onclick="removeFromCart(${item.id})">Remove</button>
+                        </div>
+                    </div>
+                `;
+                container.innerHTML += itemHTML;
+            });
+        }
+    </script>
+</body>
+</html>

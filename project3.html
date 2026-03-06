@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>LUXE | Avant-Garde Fashion</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        body { font-family: 'Montserrat', sans-serif; }
+        
+        ::-webkit-scrollbar { width: 5px; }
+        ::-webkit-scrollbar-track { background: #fff; }
+        ::-webkit-scrollbar-thumb { background: #000; }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #cartDrawer.open { transform: translateX(0); }
+        #overlay.open { opacity: 1; pointer-events: auto; }
+    </style>
+</head>
+<body class="bg-white text-black antialiased overflow-x-hidden">
+    
+    <div class="bg-black text-white text-center text-[10px] md:text-xs py-2.5 tracking-[0.2em] font-medium z-50 relative uppercase">
+        Demo Project by MJ NxtGen WebCreations &nbsp;|&nbsp; Complimentary Global Shipping
+    </div>
+
+    <nav id="navbar" class="fixed w-full z-40 transition-all duration-300 bg-white/90 backdrop-blur-md border-b border-transparent top-[36px]">
+        <div class="max-w-[1400px] mx-auto flex justify-between items-center px-6 py-5">
+            <button class="md:hidden text-xl" aria-label="Open Menu"><i class="fa-solid fa-bars"></i></button>
+
+            <div class="hidden md:flex gap-8 text-xs font-semibold tracking-widest uppercase">
+                <a href="#" class="hover:text-gray-500 transition-colors">Women</a>
+                <a href="#" class="hover:text-gray-500 transition-colors">Men</a>
+                <a href="#" class="hover:text-gray-500 transition-colors">Objects</a>
+            </div>
+
+            <a href="#" class="text-3xl md:text-4xl font-black tracking-[0.15em] hover:opacity-70 transition-opacity absolute left-1/2 -translate-x-1/2">LUXE.</a>
+            
+            <div class="flex gap-6 text-lg items-center">
+                <button class="hover:text-gray-500 transition-colors" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <button class="hidden md:block hover:text-gray-500 transition-colors" aria-label="User Account"><i class="fa-regular fa-user"></i></button>
+                <button onclick="toggleCart()" class="hover:text-gray-500 transition-colors relative group" aria-label="Open Cart">
+                    <i class="fa-solid fa-bag-shopping"></i>
+                    <span id="cartCount" class="absolute -top-2 -right-2 bg-black text-white text-[9px] font-bold w-4 h-4 rounded-full flex items-center justify-center transition-transform group-hover:scale-110">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="relative h-[90vh] mt-[36px]">
+        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80" alt="Fashion Model" class="w-full h-full object-cover">
+        
+        <div class="absolute inset-0 bg-black/30 flex flex-col justify-center items-center text-white text-center px-4">
+            <p class="text-sm md:text-base font-light tracking-[0.4em] mb-4 reveal uppercase">New Collection</p>
+            <h1 class="text-6xl md:text-8xl lg:text-[9rem] font-black mb-8 tracking-tighter leading-none reveal" style="transition-delay: 100ms;">SPRING '26</h1>
+            
+            <div class="flex flex-col sm:flex-row gap-4 reveal" style="transition-delay: 200ms;">
+                <button class="bg-white text-black px-12 py-4 text-xs font-bold tracking-[0.2em] hover:bg-black hover:text-white border border-white transition-colors duration-300">SHOP WOMEN</button>
+                <button class="bg-transparent text-white border border-white px-12 py-4 text-xs font-bold tracking-[0.2em] hover:bg-white hover:text-black transition-colors duration-300">SHOP MEN</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="max-w-[1400px] mx-auto py-24 px-6">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <div class="reveal">
+                <h2 class="text-3xl md:text-5xl font-black tracking-tight mb-6">REDEFINING <br>MODERN SILHOUETTES.</h2>
+                <p class="text-gray-500 font-light leading-relaxed mb-8 max-w-md">Our Spring 2026 collection explores the tension between architectural structure and fluid movement. Crafted with sustainable materials and uncompromising attention to detail.</p>
+                <a href="#" class="inline-block border-b-2 border-black pb-1 text-sm font-bold tracking-widest hover:text-gray-500 hover:border-gray-500 transition-all">DISCOVER THE CAMPAIGN</a>
+            </div>
+            <div class="relative reveal" style="transition-delay: 200ms;">
+                <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Editorial Look" class="w-full h-[600px] object-cover">
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-gray-50 py-24 px-6">
+        <div class="max-w-[1400px] mx-auto">
+            <div class="flex justify-between items-end mb-12 reveal">
+                <h2 class="text-3xl font-black tracking-tight">TRENDING NOW</h2>
+                <a href="#" class="hidden md:block text-sm font-bold tracking-widest uppercase hover:text-gray-500 transition">View All <i class="fa-solid fa-arrow-right ml-2"></i></a>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-x-8 gap-y-16">
+                <div class="group reveal">
+                    <div class="relative overflow-hidden mb-4 bg-white">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=800&q=80" alt="Silk Midi Dress" class="w-full h-[500px] md:h-[600px] object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
+                            <button onclick="addToCart(289)" class="w-full bg-black text-white py-3.5 text-xs font-bold tracking-[0.2em] hover:bg-white hover:text-black border border-black transition-colors">ADD TO BAG</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-bold text-sm uppercase tracking-wide mb-1">Silk Midi Dress</h3>
+                            <p class="text-gray-500 text-xs font-medium">Noir</p>
+                        </div>
+                        <p class="font-medium">$289.00</p>
+                    </div>
+                </div>
+
+                <div class="reveal" style="transition-delay: 100ms;">
+                    <div class="relative overflow-hidden mb-4 bg-gray-200">
+                        <img src="https://images.unsplash.com/photo-1539533113208-f6df8cc8b543?auto=format&fit=crop&w=800&q=80" alt="Structured Overcoat" class="w-full h-[500px] md:h-[600px] object-cover opacity-80">
+                        <div class="absolute top-4 left-4 bg-black text-white text-[9px] font-bold tracking-widest px-2 py-1 uppercase">Sold Out</div>
+                    </div>
+                    <div class="flex justify-between items-start opacity-50">
+                        <div>
+                            <h3 class="font-bold text-sm uppercase tracking-wide mb-1">Structured Overcoat</h3>
+                            <p class="text-gray-500 text-xs font-medium">Camel</p>
+                        </div>
+                        <p class="font-medium">$450.00</p>
+                    </div>
+                </div>
+
+                <div class="group reveal" style="transition-delay: 200ms;">
+                    <div class="relative overflow-hidden mb-4 bg-white">
+                        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=800&q=80" alt="Sculptural Heels" class="w-full h-[500px] md:h-[600px] object-cover transition-transform duration-700 group-hover:scale-105">
+                        <div class="absolute bottom-0 left-0 w-full p-4 translate-y-full group-hover:translate-y-0 transition-transform duration-300 ease-in-out">
+                            <button onclick="addToCart(195)" class="w-full bg-black text-white py-3.5 text-xs font-bold tracking-[0.2em] hover:bg-white hover:text-black border border-black transition-colors">ADD TO BAG</button>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="font-bold text-sm uppercase tracking-wide mb-1">Sculptural Heels</h3>
+                            <p class="text-gray-500 text-xs font-medium">Ivory</p>
+                        </div>
+                        <p class="font-medium">$195.00</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center md:hidden">
+                <a href="#" class="inline-block border-b border-black pb-1 text-sm font-bold tracking-widest uppercase">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white pt-24 pb-12 px-6">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+            <div class="lg:col-span-1">
+                <h3 class="text-3xl font-black tracking-[0.15em] mb-6">LUXE.</h3>
+                <p class="text-gray-400 text-xs leading-relaxed max-w-xs mb-6">Elevating everyday essentials through avant-garde design and sustainable craftsmanship.</p>
+                <div class="flex gap-4 text-lg">
+                    <a href="#" class="hover:text-gray-400 transition" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="hover:text-gray-400 transition" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+                    <a href="#" class="hover:text-gray-400 transition" aria-label="Pinterest"><i class="fa-brands fa-pinterest"></i></a>
+                </div>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold tracking-widest uppercase mb-6">Client Services</h4>
+                <ul class="space-y-4 text-xs text-gray-400">
+                    <li><a href="#" class="hover:text-white transition">Contact Us</a></li>
+                    <li><a href="#" class="hover:text-white transition">Shipping & Returns</a></li>
+                    <li><a href="#" class="hover:text-white transition">Track Order</a></li>
+                    <li><a href="#" class="hover:text-white transition">Size Guide</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold tracking-widest uppercase mb-6">The Brand</h4>
+                <ul class="space-y-4 text-xs text-gray-400">
+                    <li><a href="#" class="hover:text-white transition">About Us</a></li>
+                    <li><a href="#" class="hover:text-white transition">Sustainability</a></li>
+                    <li><a href="#" class="hover:text-white transition">Careers</a></li>
+                    <li><a href="#" class="hover:text-white transition">Press</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h4 class="text-xs font-bold tracking-widest uppercase mb-6">Newsletter</h4>
+                <p class="text-gray-400 text-xs mb-4">Subscribe to receive updates, access to exclusive deals, and more.</p>
+                <form class="flex border-b border-gray-600 pb-2" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                    <input type="email" placeholder="ENTER YOUR EMAIL" required class="bg-transparent w-full text-xs placeholder-gray-600 focus:outline-none text-white uppercase">
+                    <button type="submit" class="text-xs font-bold tracking-widest hover:text-gray-400 transition">SUBSCRIBE</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="max-w-[1400px] mx-auto border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-[10px] text-gray-500 font-medium tracking-widest uppercase">
+            <p>&copy; 2026 LUXE DEMO. MJ NXTGEN WEBCREATIONS.</p>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-white transition">Privacy Policy</a>
+                <a href="#" class="hover:text-white transition">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <div id="overlay" onclick="toggleCart()" class="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    
+    <div id="cartDrawer" class="fixed right-0 top-0 h-full w-full max-w-md bg-white z-[60] shadow-2xl translate-x-full transition-transform duration-500 ease-[cubic-bezier(0.25,0.46,0.45,0.94)] flex flex-col">
+        <div class="flex justify-between items-center p-6 border-b border-gray-100">
+            <h2 class="text-lg font-black tracking-widest uppercase">Your Bag <span id="drawerCount" class="text-gray-400 ml-2">(0)</span></h2>
+            <button onclick="toggleCart()" class="text-2xl hover:rotate-90 transition-transform duration-300" aria-label="Close Cart"><i class="fa-solid fa-xmark text-gray-400"></i></button>
+        </div>
+
+        <div id="cartEmpty" class="flex-grow flex flex-col items-center justify-center p-6 text-center">
+            <i class="fa-solid fa-bag-shopping text-4xl text-gray-200 mb-4"></i>
+            <p class="text-sm font-medium text-gray-500 tracking-wide uppercase">Your bag is currently empty.</p>
+            <button onclick="toggleCart()" class="mt-8 border-b-2 border-black pb-1 text-xs font-bold tracking-widest hover:text-gray-500 hover:border-gray-500 transition-all">CONTINUE SHOPPING</button>
+        </div>
+
+        <div id="cartItems" class="flex-grow overflow-y-auto p-6 hidden">
+            <div class="flex gap-4 mb-6 pb-6 border-b border-gray-100">
+                <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=200" alt="Selected Item" class="w-24 h-32 object-cover">
+                <div class="flex-grow">
+                    <div class="flex justify-between mb-1">
+                        <h3 class="font-bold text-xs uppercase tracking-wide">Selected Item</h3>
+                        <p class="text-xs font-bold">$<span id="itemPriceDisplay">289.00</span></p>
+                    </div>
+                    <p class="text-gray-500 text-[10px] uppercase tracking-widest mb-3">Color: Noir | Size: S</p>
+                    <div class="flex items-center border border-gray-200 w-max">
+                        <button class="px-3 py-1 hover:bg-gray-100 transition">-</button>
+                        <span id="mockItemQty" class="px-2 text-xs font-medium">1</span>
+                        <button class="px-3 py-1 hover:bg-gray-100 transition">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-6 border-t border-gray-100 bg-gray-50">
+            <div class="flex justify-between items-center mb-4">
+                <p class="text-xs font-bold uppercase tracking-widest">Subtotal</p>
+                <p id="cartSubtotal" class="text-lg font-black">$0.00</p>
+            </div>
+            <p class="text-[10px] text-gray-500 mb-6 uppercase tracking-widest">Shipping & taxes calculated at checkout.</p>
+            <button onclick="alert('Proceeding to secure checkout...')" class="w-full bg-black text-white py-4 text-xs font-bold tracking-[0.2em] hover:bg-white hover:text-black border border-black transition-colors duration-300">CHECKOUT</button>
+        </div>
+    </div>
+
+    <script>
+        let itemsInCart = 0;
+        let currentTotal = 0;
+
+        function toggleCart() {
+            const drawer = document.getElementById('cartDrawer');
+            const overlay = document.getElementById('overlay');
+            drawer.classList.toggle('open');
+            overlay.classList.toggle('open');
+            document.body.style.overflow = drawer.classList.contains('open') ? 'hidden' : '';
+        }
+
+        function addToCart(price) {
+            itemsInCart++;
+            currentTotal += price;
+            
+            document.getElementById('cartCount').innerText = itemsInCart;
+            document.getElementById('drawerCount').innerText = `(${itemsInCart})`;
+            document.getElementById('mockItemQty').innerText = itemsInCart;
+            
+            document.getElementById('cartEmpty').classList.add('hidden');
+            document.getElementById('cartItems').classList.remove('hidden');
+            
+            document.getElementById('itemPriceDisplay').innerText = price.toFixed(2);
+            document.getElementById('cartSubtotal').innerText = `$${currentTotal.toFixed(2)}`;
+            
+            toggleCart();
+        }
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) {
+                nav.classList.add('border-gray-200', 'shadow-sm');
+                nav.classList.remove('top-[36px]');
+                nav.classList.add('top-0');
+            } else {
+                nav.classList.remove('border-gray-200', 'shadow-sm');
+                nav.classList.add('top-[36px]');
+                nav.classList.remove('top-0');
+            }
+        });
+
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.reveal').forEach((element) => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>

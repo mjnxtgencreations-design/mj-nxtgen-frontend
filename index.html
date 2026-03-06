@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MJ NxtGen WebCreations | Premium Web Solutions</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3, .brand-font { font-family: 'Outfit', sans-serif; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #f8fafc; }
+        ::-webkit-scrollbar-thumb { background: #2563eb; border-radius: 4px; }
+
+        /* Hover Effects */
+        .project-card:hover .project-image { transform: scale(1.05); }
+        .gradient-text {
+            background: linear-gradient(to right, #2563eb, #9333ea);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Scroll Reveal Animation */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body class="bg-white text-black antialiased overflow-x-hidden">
+
+    <nav class="fixed w-full z-50 bg-white/90 backdrop-blur-md border-b border-gray-100 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center relative">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-black text-white flex items-center justify-center font-bold text-xl rounded-lg shadow-lg">M</div>
+                <div class="flex flex-col">
+                    <span class="text-lg font-bold tracking-tight brand-font leading-none">MJ NxtGen</span>
+                    <span class="text-[10px] text-blue-600 font-bold tracking-widest uppercase">WebCreations</span>
+                </div>
+            </div>
+            
+            <div class="hidden md:flex gap-8 text-sm font-semibold text-gray-600">
+                <a href="#work" class="hover:text-blue-600 transition">PORTFOLIO</a>
+                <a href="#services" class="hover:text-blue-600 transition">SERVICES</a>
+                <a href="#contact" class="hover:text-blue-600 transition">CONTACT</a>
+            </div>
+
+            <div class="hidden md:block">
+                <a href="#contact" class="bg-black text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-blue-700 transition shadow-lg hover:shadow-xl hover:-translate-y-0.5 inline-block transform">
+                    GET A QUOTE
+                </a>
+            </div>
+
+            <button onclick="toggleMobileMenu()" class="md:hidden text-2xl text-gray-800 focus:outline-none">
+                <i id="menuIcon" class="fa-solid fa-bars"></i>
+            </button>
+
+            <div id="mobileMenu" class="absolute top-full left-0 w-full bg-white border-b border-gray-100 shadow-xl hidden flex-col py-4 px-6 gap-4 md:hidden">
+                <a href="#work" onclick="toggleMobileMenu()" class="font-bold text-gray-800 hover:text-blue-600">PORTFOLIO</a>
+                <a href="#services" onclick="toggleMobileMenu()" class="font-bold text-gray-800 hover:text-blue-600">SERVICES</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="font-bold text-gray-800 hover:text-blue-600">CONTACT</a>
+                <a href="#contact" onclick="toggleMobileMenu()" class="bg-blue-600 text-white px-6 py-3 rounded-lg text-sm font-bold text-center mt-2">GET A QUOTE</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-40 pb-20 px-6 max-w-7xl mx-auto overflow-hidden">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+            <div class="reveal">
+                <div class="inline-flex items-center gap-2 bg-blue-50 text-blue-700 px-4 py-1.5 rounded-full text-xs font-bold tracking-wider mb-6 border border-blue-100">
+                    <span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+                    OPEN FOR NEW PROJECTS
+                </div>
+                <h1 class="text-5xl md:text-7xl font-black leading-tight mb-6 tracking-tight">
+                    Future-Ready <br> <span class="gradient-text">Web Experiences.</span>
+                </h1>
+                <p class="text-xl text-gray-500 mb-10 leading-relaxed max-w-lg">
+                    MJ NxtGen WebCreations builds high-performance websites for businesses that want to dominate their market. Fast. Secure. Stunning.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="bg-blue-600 text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-700 transition flex items-center justify-center gap-2 shadow-lg shadow-blue-500/30 text-center">
+                        Start Your Project
+                    </a>
+                    <a href="#work" class="border border-gray-200 px-8 py-4 rounded-lg font-bold hover:bg-gray-50 transition flex items-center justify-center gap-2 text-gray-700 text-center">
+                        See Portfolio
+                    </a>
+                </div>
+                
+                <div class="mt-10 flex flex-wrap items-center gap-6 text-gray-400 text-sm font-semibold grayscale opacity-70">
+                    <span><i class="fa-brands fa-google text-lg mr-1"></i> SEO Friendly</span>
+                    <span><i class="fa-solid fa-bolt text-lg mr-1"></i> Fast Loading</span>
+                    <span><i class="fa-solid fa-mobile-screen text-lg mr-1"></i> Mobile First</span>
+                </div>
+            </div>
+            
+            <div class="relative group reveal" style="transition-delay: 200ms;">
+                <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-2xl blur-lg opacity-30 group-hover:opacity-50 transition duration-1000"></div>
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=1000&q=80" alt="Web Development" class="relative rounded-2xl shadow-2xl bg-white border border-white/50">
+                
+                <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-xl z-20 border border-gray-100 flex items-center gap-4 animate-[bounce_3s_ease-in-out_infinite]">
+                    <div class="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
+                        <i class="fa-solid fa-check"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-500 font-bold uppercase">Performance</p>
+                        <p class="text-lg font-black text-gray-900">99/100</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="work" class="py-24 bg-gray-50 border-t border-gray-100">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 reveal">
+                <div>
+                    <h2 class="text-4xl font-black mb-3 tracking-tight">Our Latest Work</h2>
+                    <p class="text-gray-500 max-w-xl">Interactive, high-converting digital experiences. Click on any project to view the live interactive demo.</p>
+                </div>
+                <div class="flex flex-wrap gap-2" id="filter-buttons">
+                    <span onclick="filterProjects('all', this)" class="filter-btn bg-black text-white px-4 py-2 rounded-full text-xs font-bold cursor-pointer hover:bg-gray-800 transition">ALL</span>
+                    <span onclick="filterProjects('ecommerce', this)" class="filter-btn bg-white border border-gray-200 text-gray-600 px-4 py-2 rounded-full text-xs font-bold cursor-pointer hover:border-blue-600 transition">ECOMMERCE</span>
+                    <span onclick="filterProjects('corporate', this)" class="filter-btn bg-white border border-gray-200 text-gray-600 px-4 py-2 rounded-full text-xs font-bold cursor-pointer hover:border-blue-600 transition">CORPORATE</span>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                
+                <a href="project1.html" target="_blank" data-category="corporate" class="project-card group cursor-pointer bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition duration-300 block reveal">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1544025162-d76694265947?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="project-image w-full h-full object-cover transition duration-700">
+                        <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm">RESTAURANT</div>
+                        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <span class="bg-white text-black px-6 py-3 rounded-full font-bold text-sm shadow-lg flex items-center gap-2">Launch Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">The Urban Bistro</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-2">Dark-theme premium dining experience featuring glassmorphism UI and a functional reservation booking portal.</p>
+                        <div class="text-blue-600 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">View Project <i class="fa-solid fa-arrow-right text-xs"></i></div>
+                    </div>
+                </a>
+
+                <a href="project2.html" target="_blank" data-category="corporate" class="project-card group cursor-pointer bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition duration-300 block reveal" style="transition-delay: 100ms;">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="project-image w-full h-full object-cover transition duration-700">
+                        <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm">FINANCE</div>
+                        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <span class="bg-white text-black px-6 py-3 rounded-full font-bold text-sm shadow-lg flex items-center gap-2">Launch Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Apex Capital</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-2">Corporate wealth management landing page with animated metrics, trust signals, and a lead-generation consultation form.</p>
+                        <div class="text-blue-600 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">View Project <i class="fa-solid fa-arrow-right text-xs"></i></div>
+                    </div>
+                </a>
+
+                <a href="project3.html" target="_blank" data-category="ecommerce" class="project-card group cursor-pointer bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition duration-300 block reveal" style="transition-delay: 200ms;">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1483985988355-763728e1935b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="project-image w-full h-full object-cover transition duration-700">
+                        <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm">E-COMMERCE</div>
+                        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <span class="bg-white text-black px-6 py-3 rounded-full font-bold text-sm shadow-lg flex items-center gap-2">Launch Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Luxe Fashion</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-2">Avant-garde luxury storefront featuring interactive product cards, editorial layouts, and a custom JavaScript slide-out cart drawer.</p>
+                        <div class="text-blue-600 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">View Project <i class="fa-solid fa-arrow-right text-xs"></i></div>
+                    </div>
+                </a>
+
+                <a href="project4.html" target="_blank" data-category="ecommerce" class="project-card group cursor-pointer bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition duration-300 block reveal" style="transition-delay: 300ms;">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="project-image w-full h-full object-cover transition duration-700">
+                        <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm">E-COMMERCE</div>
+                        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <span class="bg-white text-black px-6 py-3 rounded-full font-bold text-sm shadow-lg flex items-center gap-2">Launch Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Minimal Fashion</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-2">Sustainable style storefront with earth-toned aesthetics, elegant product grids, and a dynamic slide-out shopping cart.</p>
+                        <div class="text-blue-600 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">View Project <i class="fa-solid fa-arrow-right text-xs"></i></div>
+                    </div>
+                </a>
+
+                <a href="project5.html" target="_blank" data-category="ecommerce" class="project-card group cursor-pointer bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition duration-300 block reveal" style="transition-delay: 400ms;">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="project-image w-full h-full object-cover transition duration-700">
+                        <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm">E-COMMERCE</div>
+                        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <span class="bg-white text-black px-6 py-3 rounded-full font-bold text-sm shadow-lg flex items-center gap-2">Launch Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Energy Apparel</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-2">High-octane fitness brand featuring a sleek dark-mode UI, aggressive red accents, and an interactive cart system.</p>
+                        <div class="text-blue-600 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">View Project <i class="fa-solid fa-arrow-right text-xs"></i></div>
+                    </div>
+                </a>
+
+                <a href="project6.html" target="_blank" data-category="ecommerce" class="project-card group cursor-pointer bg-white rounded-2xl overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:border-blue-100 transition duration-300 block reveal" style="transition-delay: 500ms;">
+                    <div class="h-64 overflow-hidden relative">
+                        <img src="https://images.unsplash.com/photo-1500937386664-56d1dfef3854?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" class="project-image w-full h-full object-cover transition duration-700">
+                        <div class="absolute top-4 right-4 bg-white/95 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm">E-COMMERCE</div>
+                        <div class="absolute inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-300">
+                            <span class="bg-white text-black px-6 py-3 rounded-full font-bold text-sm shadow-lg flex items-center gap-2">Launch Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></span>
+                        </div>
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-1">Homegrown Artisan</h3>
+                        <p class="text-gray-500 text-sm mb-4 line-clamp-2">Organic farm-to-table storefront with warm serif typography, elegant product grids, and a custom harvest box drawer.</p>
+                        <div class="text-blue-600 text-sm font-bold flex items-center gap-2 group-hover:gap-3 transition-all">View Project <i class="fa-solid fa-arrow-right text-xs"></i></div>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+    
+
+    <section id="services" class="py-24 bg-black text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-96 h-96 bg-blue-900/20 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 relative z-10">
+            <div class="text-center mb-16 reveal">
+                <h2 class="text-4xl font-black mb-4">The NxtGen Advantage</h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">We don't just build websites; we engineer digital assets that drive revenue.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center md:text-left">
+                <div class="p-6 rounded-2xl border border-gray-800 bg-gray-900/50 backdrop-blur hover:border-blue-500/50 transition duration-300 reveal">
+                    <div class="w-14 h-14 bg-blue-600/20 text-blue-500 rounded-xl flex items-center justify-center mb-6 mx-auto md:mx-0">
+                        <i class="fa-solid fa-bolt text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Lightning Fast</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">We optimize every line of code. Your website loads in under 2 seconds, keeping Google and your customers incredibly happy.</p>
+                </div>
+                
+                <div class="p-6 rounded-2xl border border-gray-800 bg-gray-900/50 backdrop-blur hover:border-purple-500/50 transition duration-300 reveal" style="transition-delay: 100ms;">
+                    <div class="w-14 h-14 bg-purple-600/20 text-purple-500 rounded-xl flex items-center justify-center mb-6 mx-auto md:mx-0">
+                        <i class="fa-solid fa-mobile-screen text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Mobile First</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Over 70% of modern web traffic is mobile. We design for the phone screen first, ensuring a perfect user experience on any device.</p>
+                </div>
+                
+                <div class="p-6 rounded-2xl border border-gray-800 bg-gray-900/50 backdrop-blur hover:border-pink-500/50 transition duration-300 reveal" style="transition-delay: 200ms;">
+                    <div class="w-14 h-14 bg-pink-600/20 text-pink-500 rounded-xl flex items-center justify-center mb-6 mx-auto md:mx-0">
+                        <i class="fa-solid fa-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">SEO Built-In</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">We build traffic engines. Your site comes pre-optimized with semantic HTML and meta structures to rank highly on search engines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="bg-white rounded-3xl overflow-hidden shadow-2xl border border-gray-100 grid grid-cols-1 lg:grid-cols-5 reveal">
+            
+            <div class="bg-blue-600 text-white p-10 lg:col-span-2 flex flex-col justify-between relative overflow-hidden">
+                <div class="absolute -bottom-20 -right-20 w-64 h-64 bg-blue-500 rounded-full opacity-50 blur-2xl"></div>
+                
+                <div class="relative z-10">
+                    <h3 class="text-3xl font-black mb-2">Get in touch</h3>
+                    <p class="text-blue-100 text-sm mb-10 leading-relaxed">Ready to elevate your digital presence? Fill out the form and our lead developer will get back to you within 24 hours.</p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-center gap-4 group cursor-pointer">
+                            <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-blue-600 transition">
+                                <i class="fa-solid fa-phone"></i>
+                            </div>
+                            <span class="font-semibold group-hover:text-blue-100 transition">+91 9113815702</span>
+                        </div>
+                        <div class="flex items-center gap-4 group cursor-pointer">
+                            <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-blue-600 transition">
+                                <i class="fa-solid fa-envelope"></i>
+                            </div>
+                            <a href="mailto:mjnxtgencreations@gmail.com" class="font-semibold group-hover:text-blue-100 transition">mjnxtgencreations@gmail.com</a>
+                        </div>
+                        <div class="flex items-center gap-4 group cursor-pointer">
+                            <div class="w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center group-hover:bg-white group-hover:text-blue-600 transition">
+                                <i class="fa-solid fa-location-dot"></i>
+                            </div>
+                            <span class="font-semibold group-hover:text-blue-100 transition">Bengaluru, Karnataka, India</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex gap-4 mt-12 relative z-10">
+                    <a href="https://www.instagram.com/mjnxtgencreations?utm_source=qr" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center hover:bg-white hover:text-blue-600 transition shadow-lg"><i class="fa-brands fa-instagram text-lg"></i></a>
+                    <a href="https://www.linkedin.com/in/mj-nxtgen-creations-8527773b5?lipi=urn%3Ali%3Apage%3Ad_flagship3_profile_view_base_contact_details%3B%2F5onLEPtSE6dmG8L9UpKSw%3D%3D" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center hover:bg-white hover:text-blue-600 transition shadow-lg"><i class="fa-brands fa-linkedin-in text-lg"></i></a>
+                    <a href="https://github.com/mjnxtgencreations-design" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-blue-700 rounded-full flex items-center justify-center hover:bg-white hover:text-blue-600 transition shadow-lg"><i class="fa-brands fa-github text-lg"></i></a>
+                </div>
+            </div>
+
+            <div class="p-10 lg:p-14 lg:col-span-3 bg-white text-black">
+                <form id="contactForm" class="space-y-8">
+                    <input type="hidden" name="_gotcha" style="display:none">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Your Name</label>
+                            <input type="text" name="name" required class="w-full border-b-2 border-gray-200 py-2 focus:outline-none focus:border-blue-600 transition bg-transparent font-medium" placeholder="John Doe">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Phone</label>
+                            <input type="tel" name="phone" required class="w-full border-b-2 border-gray-200 py-2 focus:outline-none focus:border-blue-600 transition bg-transparent font-medium" placeholder="+91 99999 99999">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Email Address</label>
+                        <input type="email" name="email" required class="w-full border-b-2 border-gray-200 py-2 focus:outline-none focus:border-blue-600 transition bg-transparent font-medium" placeholder="john@company.com">
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">What do you need?</label>
+                        <select name="service" class="w-full border-b-2 border-gray-200 py-2 focus:outline-none focus:border-blue-600 transition bg-transparent font-medium cursor-pointer">
+                            <option>I need a new website</option>
+                            <option>Redesign my old website</option>
+                            <option>Custom Web Application</option>
+                            <option>E-Commerce Store</option>
+                            <option>General Consultation</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-bold text-gray-500 mb-2 uppercase tracking-wider">Project Details</label>
+                        <textarea name="details" required class="w-full border-b-2 border-gray-200 py-2 h-24 focus:outline-none focus:border-blue-600 transition resize-none font-medium bg-transparent" placeholder="Tell us a little bit about your business and goals..."></textarea>
+                    </div>
+
+                    <button type="submit" class="bg-black text-white px-8 py-4 rounded-lg font-bold hover:bg-blue-600 transition w-full shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform flex justify-center items-center gap-2">
+                        SEND MESSAGE <i class="fa-solid fa-paper-plane text-sm"></i>
+                    </button>
+                    <p id="formStatus" class="text-sm font-medium hidden"></p>
+                </form>
+            </div>
+
+        </div>
+    </section>
+
+    <footer class="bg-white border-t border-gray-100 py-12 mt-10">
+        <div class="max-w-7xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+            <div class="text-center md:text-left">
+                <div class="flex items-center justify-center md:justify-start gap-2 mb-3">
+                    <div class="w-8 h-8 bg-black text-white flex items-center justify-center font-bold text-sm rounded">M</div>
+                    <span class="font-black brand-font tracking-tight text-lg">MJ NxtGen WEBCREATIONS</span>
+                </div>
+                <p class="text-gray-400 text-sm font-medium">© 2026 MJ NxtGen WebCreations. Engineered for growth.</p>
+            </div>
+            <div class="flex gap-8 text-sm font-bold text-gray-500 uppercase tracking-wider">
+                <a href="privacy.html" class="hover:text-blue-600 transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-blue-600 transition">Terms of Service</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const contactForm = document.getElementById("contactForm");
+        contactForm.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const formStatus = document.getElementById("formStatus");
+            const submitBtn = contactForm.querySelector("button[type='submit']");
+            const originalBtnHtml = submitBtn.innerHTML;
+            const data = {
+                name: document.querySelector("[name='name']").value,
+                phone: document.querySelector("[name='phone']").value,
+                email: document.querySelector("[name='email']").value,
+                service: document.querySelector("[name='service']").value,
+                details: document.querySelector("[name='details']").value,
+                _gotcha: document.querySelector("[name='_gotcha']").value,
+                client_time: new Date().toISOString(),
+                client_timezone: Intl.DateTimeFormat().resolvedOptions().timeZone || ""
+            };
+
+            formStatus.className = "text-sm font-medium hidden";
+            submitBtn.disabled = true;
+            submitBtn.classList.add("opacity-70", "cursor-not-allowed");
+            submitBtn.innerHTML = "SENDING...";
+
+            try {
+                const response = await fetch("https://mj-nxtgen-creations-1.onrender.com/api/contact", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify(data)
+                });
+                const result = await response.json();
+                if (!response.ok || !result.ok) {
+                    throw new Error(result.error || "Failed to submit message.");
+                }
+
+                contactForm.reset();
+                formStatus.textContent = "Message sent successfully.";
+                formStatus.className = "text-sm font-medium text-green-600";
+            } catch (error) {
+                formStatus.textContent = "Unable to send now. Please try again.";
+                formStatus.className = "text-sm font-medium text-red-600";
+            } finally {
+                formStatus.classList.remove("hidden");
+                submitBtn.disabled = false;
+                submitBtn.classList.remove("opacity-70", "cursor-not-allowed");
+                submitBtn.innerHTML = originalBtnHtml;
+            }
+        });
+
+        // Mobile Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            const icon = document.getElementById('menuIcon');
+            
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                menu.classList.add('flex');
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-xmark');
+            } else {
+                menu.classList.add('hidden');
+                menu.classList.remove('flex');
+                icon.classList.remove('fa-xmark');
+                icon.classList.add('fa-bars');
+            }
+        }
+
+        // --- NEW: Category Filtering Logic ---
+        function filterProjects(category, btnElement) {
+            // Update button styles to reflect active state
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-black', 'text-white');
+                btn.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200');
+            });
+            btnElement.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200');
+            btnElement.classList.add('bg-black', 'text-white');
+
+            // Filter the project cards
+            const projects = document.querySelectorAll('.project-card');
+            projects.forEach(project => {
+                const projectCategory = project.getAttribute('data-category');
+                
+                if (category === 'all' || projectCategory === category) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+
+        // Scroll Reveal Animation (Intersection Observer)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Trigger on initial load
+    </script>
+</body>
+</html>
+
+
+
+
+
